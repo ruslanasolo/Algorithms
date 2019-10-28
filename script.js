@@ -418,7 +418,7 @@ const cipher = (str, shift)=> {
     }
     return cipherString;
 }
-console.log(cipher("I love javascript!", 1))
+//console.log(cipher("I love javascript!", 1))
 
 function getNewCode(str, i , startLetter, shift){   
     let strCode = str.charCodeAt(i); 
@@ -427,12 +427,32 @@ function getNewCode(str, i , startLetter, shift){
         newCode = (newCode % 25) + startLetter.charCodeAt(0); 
         return String.fromCharCode(newCode);  
 }
-//________________________________________________________________________________________
 
+//________________________________________________________________________________________
+//13. Ransom Note
+//Given a magazine of words and a ransom note, determine if it’s possible to “cut out” and create the ransom note from the
+// magazine words.
 //1. split magazin words into array.
 //2. create object, go through word_array, put each word in object with count
-//3. split note, go through each note_word and check that it exist in word_object, and word.count > note_count (for first impl, we can skip it)
+//3. split note, go through each note_word and check that it exist in word_object, and word.count > note_count
+// (for first impl, we can skip it)
 
+const ramsomNote = (magazine, note)=>{
+    const magazineWords = magazine.split(" ");
+    const hashWords = {};
+
+    for(let i =0; i < magazineWords.length; i+=1 ){
+        if (hashWords[magazineWords[i]]   == undefined){
+            hashWords[magazineWords[i]] = 1;
+          }
+          else{
+            hashWords[magazineWords[i]]++;
+          }
+    }
+    return hashWords;
+}
+
+ramsomNote ("hello perhect world, hello sun, hello sky", "hello sky")
 //________________________________________________________________________________________
 //________________________________________________________________________________________
 //________________________________________________________________________________________
