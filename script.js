@@ -360,7 +360,7 @@ const reverseWords = (incomes) => {
     }
     return reversedPhrase;
 }
-console.log (reverseWords("How are you?"))
+//console.log (reverseWords("How are you?"))
 //if there is no .split we can use own split function
 function my_split(str, separator){
     //return array of words splitted by separator
@@ -437,12 +437,12 @@ function getNewCode(str, i , startLetter, shift){
 //3. split note, go through each note_word and check that it exist in word_object, and word.count > note_count
 // (for first impl, we can skip it)
 
-const ramsomNote = (magazine, note)=>{
-    const magazineWords = magazine.split(" ");
+const buildHash = (str)=>{
+    const magazineWords = str.split(" ");
     const hashWords = {};
 
-    for(let i =0; i < magazineWords.length; i+=1 ){
-        if (hashWords[magazineWords[i]]   == undefined){
+    for(let i =0; i < magazineWords.length; i++){
+        if (hashWords[magazineWords[i]]== undefined){
             hashWords[magazineWords[i]] = 1;
           }
           else{
@@ -451,9 +451,24 @@ const ramsomNote = (magazine, note)=>{
     }
     return hashWords;
 }
+const ramsomNote = (note,pattern) => {
+    let patternCheck = buildHash(pattern);
+    let noteCheck = buildHash(note);
 
-ramsomNote ("hello perhect world, hello sun, hello sky", "hello sky")
+    for (let key in patternCheck){
+        if(noteCheck[key] == undefined){
+            return false;
+        }
+        if ( noteCheck[key] < patternCheck[key] ) {
+            return false;         
+       }     
+    }
+    return true; 
+}
+console.log(ramsomNote ("hello perhect world, hello sun, hello sky", "hello sky sunny"));
 //________________________________________________________________________________________
+
+
 //________________________________________________________________________________________
 //________________________________________________________________________________________
 //________________________________________________________________________________________
