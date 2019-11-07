@@ -1,37 +1,33 @@
-//1 Given a string of characters as input, write a function that returns it with the characters reversed.
-// const reverse_str = () => {
-//    let res1 = reverse_str1("Learning JavaScript")
-// }
-
-// ***  split(), reverse(), join()
-
+/* 1 Given a string of characters as input, write a function that returns it with the characters reversed.
+const reverse_str = () => {
+   let res1 = reverse_str1("Learning JavaScript")
+}
+***  split(), reverse(), join() */
 // TESTS first
 const reverse_str = (str) => {
     let reversedStr = "";
-    for (let i = str.length -1; i >=0; i--){
+    for (let i = str.length - 1; i >= 0; i--) {
         reversedStr += str[i];
     }
     return reversedStr;
 }
-test_reverse_str = ()=>{
-const res1 = reverse_str("");
-assert(res1 == "");
+test_reverse_str = () => {
+    const res1 = reverse_str("");
+    assert(res1 == "");
 
-const res2 = reverse_str("abcd");
-assert(res2 == "dcba");
+    const res2 = reverse_str("abcd");
+    assert(res2 == "dcba");
 }
 //console.log(test_reverse_str);
-// console.log(reverse_str("Learning JavaScript"));
-
+//console.log(reverse_str("Learning JavaScript"));
 //________________________________________________________________________________________
-
-//2. A palindrome is a word or phrase that reads the same backward as forward. Write a function that checks for this.
-// TESTS first
-//TODO  "Eva" = False, "eve" = true; "Hello" = False,  "" = ?   "Cigar? Toss it in a can. It is so tragic" = True
+/*2. A palindrome is a word or phrase that reads the same backward as forward. Write a function that checks for this.
+TESTS
+"Eva" = False, "eve" = true; "Hello" = False,  "" = ?   "Cigar? Toss it in a can. It is so tragic" = True */
 const check_palindrome = (someDate) => {
     someDate = someDate.toLowerCase();
-    for(let i=0; i<someDate.length/2; i++){
-        if(someDate[i] !== someDate[someDate.length -1 -i]){
+    for (let i = 0; i < someDate.length / 2; i++) {
+        if (someDate[i] !== someDate[someDate.length - 1 - i]) {
             return false;
         }
     }
@@ -49,20 +45,17 @@ const check_palindrome = (someDate) => {
 // }
 // //if we after loop, so it's palyndrom
 // return true;
-
-
 //________________________________________________________________________________________
-//3. Given an integer, reverse the order of the digits.
-// integer to string -> .toString,  string into number -> parseInt()
-// const reverse_int = (int) => {
-//     let intoStr = int.toString();
-//     let reversedInt = "";
-//     for (let i = intoStr.length -1; i >=0; i--){
-//         reversedInt += intoStr[i];
-//     }
-//     return parseInt(reversedInt);
-// }
-
+/*3. Given an integer, reverse the order of the digits.
+ integer to string -> .toString,  string into number -> parseInt() */
+const reverse_int = (int) => {
+    let intoStr = int.toString();
+    let reversedInt = "";
+    for (let i = intoStr.length - 1; i >= 0; i--) {
+        reversedInt += intoStr[i];
+    }
+    return parseInt(reversedInt);
+}
 // //console.log(reverse_int(-1200));
 
 // test_reverse_int= ()=>{
@@ -75,21 +68,21 @@ const check_palindrome = (someDate) => {
 
 // res 14 -> 41  ( 14/10=1 , 14%10=4 //next step 1/10=0, 1%10=1, devide till got 0,)
 
-const revInt =(number) => {
-    let revNumber =0;
-    while (number > 0){
+const revInt = (number) => {
+    let revNumber = 0;
+    while (number > 0) {
         let div = number % 10;
         revNumber = revNumber * 10 + div;
-        number = Math.floor(number / 10); 
+        number = Math.floor(number / 10);
     }
     return revNumber;
 }
 //console.log(revInt(123))
-
 //________________________________________________________________________________________
-
-//4. Given a number as an input, print out every integer from 1 to that number. However, when the integer is divisible by 2, print out “Fizz”; when it’s divisible by 3, print out “Buzz”; when it’s divisible by ////both 2 and 3, print out “Fizz Buzz”.
-// //function fizzBuzz(){
+/*4. Given a number as an input, print out every integer from 1 to that number. 
+However, when the integer is divisible by 2, print out “Fizz”; when it’s divisible by 3, 
+print out “Buzz”; when it’s divisible by ////both 2 and 3, print out “Fizz Buzz”. */
+// function fizzBuzz(){
 //     var output;
 //     for(var i=1;i<=100;i++){
 //       output = '';
@@ -105,50 +98,41 @@ const revInt =(number) => {
 //       print(output);
 //     }
 //   }
-const fizzbuzz =(anyNum) => {
+const fizzbuzz = (anyNum) => {
     result = [];
-    for( let i=1; i<=anyNum; i++){
-        if(i%2 === 0 & i%3===0){
-            result.push("Fizz Buzz") 
-        }
-        else if (i%2===0){
+    for (let i = 1; i <= anyNum; i++) {
+        if (i % 2 === 0 & i % 3 === 0) {
+            result.push("Fizz Buzz")
+        } else if (i % 2 === 0) {
             result.push("Fizz")
-        }
-        else if (i%3===0){
+        } else if (i % 3 === 0) {
             result.push("Buzz")
-        }
-        else {
+        } else {
             result.push(i)
         }
     }
     return result;
-    
 }
 //console.log(fizzbuzz(18))
-
 //________________________________________________________________________________________
-
 // 5. Max Character
 //Given a string of characters, return the character that appears the most often.
-
-
-const maxChar = (someString) =>{
+const maxChar = (someString) => {
     let maxCount = 0;
-    let maxSymb  = "";
+    let maxSymb = "";
 
-    for (let i = 0; i<someString.length; i++){
-        let currCount =1;
-        for (let j =i; j<someString.length-1; j++){
+    for (let i = 0; i < someString.length; i++) {
+        let currCount = 1;
+        for (let j = i; j < someString.length - 1; j++) {
             if (someString[i] === someString[j])
-            currCount++; 
+                currCount++;
         }
-        if (currCount >maxCount){
-            maxCount=currCount;
+        if (currCount > maxCount) {
+            maxCount = currCount;
             maxSymb = someString[i];
         }
-        
     }
-return maxSymb;
+    return maxSymb;
 }
 //console.log(maxChar("Hello"))
 
@@ -163,175 +147,136 @@ return maxSymb;
 // }  
 // test_maxChar();
 const frChar = (string) => {
-    // let stringMap = {};
-    // let maxSym = "";
-    // let maxCount = 0;
-
-    // for(let i =0; i < string.length; i+=1 ){
-    //     if (stringMap[string[i]]   == undefined){
-    //         //first time - save symbol with counter = 1
-    //         stringMap[ string[i]] = 1;
-    //       }
-    //       else{
-    //         //already have it with some counter
-    //         stringMap[ string[i]]++;
-    //       }  
-    // }
-
-    // for (let prop in stringMap){
-    //     if (stringMap[prop] > maxCount){
-    //         maxCount = stringMap[prop];
-    //         maxSym = prop;
-    //     }
-    // }
-    // return maxSym;
     let stringMap = {};
     let maxSym = "";
     let maxCount = 0;
-   
-       for(let i =0; i < string.length; i+=1 ){
-           if (stringMap[string[i]]   == undefined){
-               //first time - save symbol with counter = 1
-               stringMap[ string[i]] = 1;
-             }
-             else{
-               //already have it with some counter
-               stringMap[ string[i]]++;
-             }  
-       //we can check where is max
-          if (stringMap[string[i]] > maxCount){
-               maxCount = stringMap[string[i]];
-               maxSym = string[i];
-           }
-       }
-       
-   
-       return maxSym;
-   
+
+    for (let i = 0; i < string.length; i += 1) {
+        if (stringMap[string[i]] == undefined) {
+            //first time - save symbol with counter = 1
+            stringMap[string[i]] = 1;
+        } else {
+            //already have it with some counter
+            stringMap[string[i]]++;
+        }
+        //we can check where is max
+        if (stringMap[string[i]] > maxCount) {
+            maxCount = stringMap[string[i]];
+            maxSym = string[i];
+        }
+    }
+    return maxSym;
 }
 //console.log(frChar("hello"));
-
 //________________________________________________________________________________________
-
-// 6. Anagrams
-// Anagrams are words or phrases that contain the same number of characters. Create a function that checks for this
-//time complexity O(N + N) = O(2N) = O(N) 
-//space complexity O(R+R) = O(2R), where R - number of different symbols (ordinary would be 256)
-
+/* 6. Anagrams
+ Anagrams are words or phrases that contain the same number of characters. Create a function that checks for this
+time complexity O(N + N) = O(2N) = O(N) 
+space complexity O(R+R) = O(2R), where R - number of different symbols (ordinary would be 256) */
 const getHashTable = (str) => {
     let stringMap = {};
 
-    for(let i =0; i < str.length; i+=1 ){
-        if (stringMap[str[i]]   == undefined){
-            stringMap[ str[i]] = 1;
-          }
-          else{
-            stringMap[ str[i]]++;
-          }
+    for (let i = 0; i < str.length; i += 1) {
+        if (stringMap[str[i]] == undefined) {
+            stringMap[str[i]] = 1;
+        } else {
+            stringMap[str[i]]++;
+        }
     }
     return stringMap;
 }
 const anagram = (string1, string2) => {
-    if(string1.length !== string2.length){
+    if (string1.length !== string2.length) {
         return false;
     }
     let string1Map = getHashTable(string1);
     let string2Map = getHashTable(string2);
 
-    for (let key in string1Map){
-        if(string1Map[key] !== string2Map[key]){
+    for (let key in string1Map) {
+        if (string1Map[key] !== string2Map[key]) {
             return false;
-        }      
+        }
     }
-    
-        return true;
+    return true;
 }
 //console.log(anagram("hello", "olleh"))
-//another way 
-//Space complexity O(1) (nothing), but time complexity is worst - linearithmic - O(N * LogN)
-//N LonN with .sort 
+
+/*another way 
+Space complexity O(1) (nothing), but time complexity is worst - linearithmic - O(N * LogN)
+N LonN with .sort */
 
 const anagr = (str1, str2) => {
-if(str1.length !== str2.length){
-    return false;
-}
-let strA = str1.split('').sort().join('');
-let strB = str2.split('').sort().join('');
-if (strA !== strB ){
-    return false;
-}
-return true;
+    if (str1.length !== str2.length) {
+        return false;
+    }
+    let strA = str1.split('').sort().join('');
+    let strB = str2.split('').sort().join('');
+    if (strA !== strB) {
+        return false;
+    }
+    return true;
 }
 console.log(anagr("hello", "olleh"))
-
 //________________________________________________________________________________________
 //7. Vowels . Given a string of words or phrases, count the number of vowels.
-const vowelsCount = (string) =>{
+const vowelsCount = (string) => {
     let countVow = 0;
     //let characters = "aeiou";
-    let chars = ['a','e','i','o','u'];
+    let chars = ['a', 'e', 'i', 'o', 'u'];
 
-    for(let vowel of string.toLowerCase()){
-        if(chars.includes(vowel)){
+    for (let vowel of string.toLowerCase()) {
+        if (chars.includes(vowel)) {
             countVow++
-        }       
+        }
     }
     return countVow;
 }
 //console.log("number of vowels", vowelsCount("Hello friends"))
-
 //________________________________________________________________________________________
+/* 8. Array Chunking
+Given an array and a size, split the array items into a list of arrays of the given size. */
+const arrChnk = (myArray, chunk) => {
+    let newArray = [];
 
-//8. Array Chunking
-//Given an array and a size, split the array items into a list of arrays of the given size.
-
-const arrChnk = (myArray, chunk) =>{
-    let newArray =[];
-
-    for (let i=0; i<myArray.length; i+=chunk){
-        chunkArr = myArray.slice(i, i+chunk);
+    for (let i = 0; i < myArray.length; i += chunk) {
+        chunkArr = myArray.slice(i, i + chunk);
         newArray.push(chunkArr);
     }
     return newArray;
 }
 //console.log("this is chunk", arrChank([1, 2, 3, 4, 5, 6], 2));
-
 //_______________________________________________________________________________________
-//9. Reverse Array
-//Given an array of items, reverse the order.
+/* 9. Reverse Array
+Given an array of items, reverse the order. */
+//9.1
+const reversArr = (arr) => {
+    let newArr = [];
 
-//Reverse Array
-//Given an array of items, reverse the order.
-
-// const reversArr = (arr) => {
-//     let newArr = [];
-
-//     for(let i = 0; i < arr.length/2; i++){
-//       arr[i] = arr[arr.length - 1 - i];
-//       newArr.push(arr[i]);
-//     }
-//     return newArr;
-// }
+    for (let i = 0; i < arr.length / 2; i++) {
+        arr[i] = arr[arr.length - 1 - i];
+        newArr.push(arr[i]);
+    }
+    return newArr;
+}
 // console.log(reversArr([1,2,3,4,5,6,7]));
-
-const complRevers = (origArr)=>{
+//9.2
+const complRevers = (origArr) => {
     let arr1 = new Array();
     let arr2 = new Array();
-    let half = Math.floor(origArr.length /2) ;
-    for(let i = origArr.length-1; i >= half; i--){
-    if (i != half)  {
-        arr1.push(origArr[i]);
-    }
-      arr2.push( origArr[i - half] );
+    let half = Math.floor(origArr.length / 2);
+    for (let i = origArr.length - 1; i >= half; i--) {
+        if (i != half) {
+            arr1.push(origArr[i]);
+        }
+        arr2.push(origArr[i - half]);
     }
     let reversedArr = [...arr1, ...arr2];
     return reversedArr;
-    }
-    //console.log(complRevers([1,2,3,4,5,6,7]))
+}
+//console.log(complRevers([1,2,3,4,5,6,7]))
 //________________________________________________________________________________________
-
-//10. Reverse Words
-//Given a phrase, reverse the order of the characters of each word.
+/*10. Reverse Words
+Given a phrase, reverse the order of the characters of each word.*/
 //test case
 // describe("Reverse Words", () => {
 //  it("Should reverse words", () => {
@@ -352,263 +297,216 @@ const reverseWords = (incomes) => {
     let reversedPhrase = "";
     let tempArray = incomes.split(" ");
 
-    for (let i = 0; i < tempArray.length; i++){
+    for (let i = 0; i < tempArray.length; i++) {
         reversedPhrase += reverse_str(tempArray[i]);
-        if (i != tempArray.length -1){
-        reversedPhrase += " ";
+        if (i != tempArray.length - 1) {
+            reversedPhrase += " ";
         }
     }
     return reversedPhrase;
 }
 //console.log (reverseWords("How are you?"))
 //if there is no .split we can use own split function
-function my_split(str, separator){
+function my_split(str, separator) {
     //return array of words splitted by separator
     let arraySplit = [];
     let newStr = "";
-    for(let i =0; i < str.length; i++){
-        if (str[i] != separator){
-            newStr+=str[i];
-        }
-        else {
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] != separator) {
+            newStr += str[i];
+        } else {
             arraySplit.push(newStr);
-            newStr ="";
-        }   
+            newStr = "";
+        }
     }
     arraySplit.push(newStr);
     return arraySplit;
-   }
-   //console.log (my_split("I love Javascript!", " "))
+}
+//console.log (my_split("I love Javascript!", " "))
 //________________________________________________________________________________________
 //11. Capitalization
 //Given a phrase, capitalize every word.
 const capitalizeIt = (words) => {
     let justCapitalized = [];
-    for (let word of words.split(" ")){
+    for (let word of words.split(" ")) {
 
-    justCapitalized.push(word[0].toUpperCase() + word.slice(1))
+        justCapitalized.push(word[0].toUpperCase() + word.slice(1))
 
     }
     return justCapitalized.join(" ");
 }
 //console.log(capitalizeIt("how are you?"))
-
 //________________________________________________________________________________________
-
 //12. Caesar Cipher
-//Given a phrase, substitute each character by shifting it up or down the alphabet by a given integer. If necessary, the shifting should wrap around back to the beginning or end of the alphabet.
-const cipher = (str, shift)=> {
+/* Given a phrase, substitute each character by shifting it up or down the alphabet by a given integer. 
+If necessary, the shifting should wrap around back to the beginning or end of the alphabet. */
+const cipher = (str, shift) => {
     let cipherString = "";
-    for (let i=0; i<str.length; i++){
+    for (let i = 0; i < str.length; i++) {
         if ((str.charCodeAt(i) >= 'A'.charCodeAt(0)) &&
-        (str.charCodeAt(i) <= 'Z'.charCodeAt(0))) 
-        {
-            getNewCode(str, i , 'A', shift);
+            (str.charCodeAt(i) <= 'Z'.charCodeAt(0))) {
+            getNewCode(str, i, 'A', shift);
             cipherString += newCode;
-        }
-         else if((str.charCodeAt(i) >= 'a'.charCodeAt(0) ) &&  
-            (str.charCodeAt(i) <= 'z'.charCodeAt(0) ))
-        {
-            getNewCode(str, i , 'a', shift);
+        } else if ((str.charCodeAt(i) >= 'a'.charCodeAt(0)) &&
+            (str.charCodeAt(i) <= 'z'.charCodeAt(0))) {
+            getNewCode(str, i, 'a', shift);
             cipherString += newCode;
-        }
-        else{
+        } else {
             cipherString += str[i];
         }
     }
     return cipherString;
 }
 //console.log(cipher("I love javascript!", 1))
-
-function getNewCode(str, i , startLetter, shift){   
-    let strCode = str.charCodeAt(i); 
-        strCode -= startLetter.charCodeAt(0);
-        let newCode = strCode + shift; 
-        newCode = (newCode % 25) + startLetter.charCodeAt(0); 
-        return String.fromCharCode(newCode);  
+const getNewCode = (str, i, startLetter, shift) => {
+    let strCode = str.charCodeAt(i);
+    strCode -= startLetter.charCodeAt(0);
+    let newCode = strCode + shift;
+    newCode = (newCode % 25) + startLetter.charCodeAt(0);
+    return String.fromCharCode(newCode);
 }
-
 //________________________________________________________________________________________
-//13. Ransom Note
-//Given a magazine of words and a ransom note, determine if it’s possible to “cut out” and create the ransom note from the
-// magazine words.
-//1. split magazin words into array.
-//2. create object, go through word_array, put each word in object with count
-//3. split note, go through each note_word and check that it exist in word_object, and word.count > note_count
-// (for first impl, we can skip it)
-
-const buildHash = (str)=>{
+/* 13. Ransom Note
+Given a magazine of words and a ransom note, determine if it’s possible to “cut out” and create the ransom note from the
+magazine words.
+1. split magazin words into array.
+2. create object, go through word_array, put each word in object with count
+3. split note, go through each note_word and check that it exist in word_object, and word.count > note_count
+(for first impl, we can skip it)
+time O(n) , where n number of words in notes
+space complexity O (n + k), where n number of diff. words in note, k - number of diff. words in text */
+const buildHash = (str) => {
     const magazineWords = str.split(" ");
     const hashWords = {};
 
-    for(let i =0; i < magazineWords.length; i++){
-        if (hashWords[magazineWords[i]]== undefined){
+    for (let i = 0; i < magazineWords.length; i++) {
+        if (hashWords[magazineWords[i]] == undefined) {
             hashWords[magazineWords[i]] = 1;
-          }
-          else{
+        } else {
             hashWords[magazineWords[i]]++;
-          }
+        }
     }
     return hashWords;
 }
-const ramsomNote = (note,pattern) => {
+const ramsomNote = (note, pattern) => {
     let patternCheck = buildHash(pattern);
     let noteCheck = buildHash(note);
 
-    for (let key in patternCheck){
-        if(noteCheck[key] == undefined){
+    for (let key in patternCheck) {
+        if (noteCheck[key] == undefined) {
             return false;
         }
-        if ( noteCheck[key] < patternCheck[key] ) {
-            return false;         
-       }     
+        if (noteCheck[key] < patternCheck[key]) {
+            return false;
+        }
     }
-    return true; 
+    return true;
 }
-console.log(ramsomNote ("hello perhect world, hello sun, hello sky", "hello sky sunny"));
+console.log(ramsomNote("hello perhect world, hello sun, hello sky", "hello sky sunny"));
 //________________________________________________________________________________________
+/* 14. Mean, Median, and Mode. Given an array of numbers, calculate the mean, median, and mode.
+The mean is the average of all numbers and is sometimes called the arithmetic mean. 
+Median : The median is the middle number in a group of numbers.
+Mode : The mode is the number that occurs most often within a set of numbers. */
 
+//mean
+const meanFunc = (numberSet) => {
+    const meanValue = numberSet.reduce((accum, currentVal) => accum + currentVal, 0) / numberSet.length;
+    return meanValue;
+}
 
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
-//________________________________________________________________________________________
+//median
+const medianFunc = (numberSet) => {
+    const arrSorted = numberSet.sort();
+    let middle = Math.floor(arrSorted.length / 2) - 1;
+    let result;
 
+    if (arrSorted.length % 2 === 0) { //even
+        result = (arrSorted[middle]) / 2 + (arrSorted[middle + 1]) / 2; // everage of two middle number
+    } else {
+        //midle number only
+        result = arrSorted[middle];
+    }
+    return result;
+}
+//mode
+const modeFunc = (numberSet) => {
+    let table = {};
+    let counted = 0;
+    let mostPresent;
+
+    for (let i = 0; i < numberSet.length; i++) {
+        if (table[numberSet[i]] == undefined) {
+            table[numberSet[i]] = 1
+        } else {
+            table[numberSet[i]]++
+        }
+        if (table[numberSet[i]] > counted) {
+            counted = table[numberSet[i]]
+            mostPresent = numberSet[i];
+        }
+    }
+    return mostPresent;
+}
+//console.log(meanFunc([1, 2, 3, 4, 4, 5, 5]))
+//console.log(meanFunc([1, 1, 2, 2, 3, 3, 4, 4]))
+// console.log(medianFunc([1, 2, 3, 4, 4, 5, 5]))
+// console.log(medianFunc([1, 1, 2, 2, 3, 3, 4, 4]))
+//console.log(modeFunc([1, 2, 3, 4, 4, 4,4, 5, 5,5]))
+//console.log(modeFunc([1, 1, 2, 2, 3, 3, 4, 4]))
+//________________________________________________________________________________________
+/* 15. Two Sum. (O(n))
+Given an array of numbers, return all pairs that add up to a given sum. The numbers can be used more than once.
+describe("Two Sum", () => {
+ it("Should implement two sum", () => {
+  assert.deepEqual(twoSum([1, 2, 2, 3, 4], 4), [[2, 2], [3, 1]]);
+ });
+}); */
+const fillHashMap = (numbers) => {
+    const hashElems = {};
+
+    for (let i = 0; i < numbers.length; ++i)
+        if (hashElems[numbers[i]] == undefined) {
+            hashElems[numbers[i]] = [];
+            hashElems[numbers[i]].push(i);
+        } else {
+            hashElems[numbers[i]].push(i);
+        }
+    return hashElems;
+}
+const isValid = (ind, indArr) => {
+    if (indArr == undefined){
+        return false;
+    }
+    
+    //it's valid only if indArr contains at least 1 index > ind
+    for (let i = 0; i < indArr.length; ++i) {
+        if (indArr[i] > ind)
+            return true;
+    }
+    return false;
+}
+const twoSum = (arr, sum) => {
+    let elemCheck = fillHashMap(arr);
+    const resPairs = [];
+
+    for (let i = 0; i < arr.length; ++i) {
+        let remElem = sum - arr[i];
+        let hs = elemCheck[remElem];
+        if (isValid(i, hs)) {
+            resPairs.push([arr[i], remElem])
+        }
+    }
+    return resPairs;
+}
+console.log(twoSum([1, 1, 4, 6, 9, 3], 7));
+//________________________________________________________________________________________
+/*
+so logic looks like this,
+arr = [1, 2, 2, 3, 4], =  4
+when we go through arr
+arr[0] = 1, is there 4-1 = 3 in array, if so, push it in res [1, 3],
+//IMPORTANT - as push it in res, decrease count of pushed item hash[1]-- , hash[3] - -, and remove from hash if hash[1] = 0 or hash[3] =0
+otherwise it will calculate double times the same pairs
+for instance
+arr[3] = 3 and in hash[1] exist, (if we don't remove it), as result we put 1 more time pair [3, 1], which was prev. added as [1, 3] */
