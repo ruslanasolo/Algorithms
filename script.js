@@ -216,7 +216,7 @@ const anagr = (str1, str2) => {
     }
     return true;
 }
-console.log(anagr("hello", "olleh"))
+//console.log(anagr("hello", "olleh"))
 //________________________________________________________________________________________
 //7. Vowels . Given a string of words or phrases, count the number of vowels.
 const vowelsCount = (string) => {
@@ -402,7 +402,7 @@ const ramsomNote = (note, pattern) => {
     }
     return true;
 }
-console.log(ramsomNote("hello perhect world, hello sun, hello sky", "hello sky sunny"));
+//console.log(ramsomNote("hello perhect world, hello sun, hello sky", "hello sky sunny"));
 //________________________________________________________________________________________
 /* 14. Mean, Median, and Mode. Given an array of numbers, calculate the mean, median, and mode.
 The mean is the average of all numbers and is sometimes called the arithmetic mean. 
@@ -475,10 +475,10 @@ const fillHashMap = (numbers) => {
     return hashElems;
 }
 const isValid = (ind, indArr) => {
-    if (indArr == undefined){
+    if (indArr == undefined) {
         return false;
     }
-    
+
     //it's valid only if indArr contains at least 1 index > ind
     for (let i = 0; i < indArr.length; ++i) {
         if (indArr[i] > ind)
@@ -499,14 +499,48 @@ const twoSum = (arr, sum) => {
     }
     return resPairs;
 }
-console.log(twoSum([1, 1, 4, 6, 9, 3], 7));
+//console.log(twoSum([1, 1, 4, 6, 9, 3], 7));
 //________________________________________________________________________________________
-/*
-so logic looks like this,
-arr = [1, 2, 2, 3, 4], =  4
-when we go through arr
-arr[0] = 1, is there 4-1 = 3 in array, if so, push it in res [1, 3],
-//IMPORTANT - as push it in res, decrease count of pushed item hash[1]-- , hash[3] - -, and remove from hash if hash[1] = 0 or hash[3] =0
-otherwise it will calculate double times the same pairs
-for instance
-arr[3] = 3 and in hash[1] exist, (if we don't remove it), as result we put 1 more time pair [3, 1], which was prev. added as [1, 3] */
+/*16. Max Profit
+Given an array of stock prices, find the minimum buy price and the maximum sell price that produce the greatest profit.
+*/
+const findMаxSell = (prices, low) => {
+    //find max price in prices
+    let maxIndex = low; ////we have to remember index of max value; index will be enough since we always have array
+    for (let index = low + 1; index < prices.length; ++index) {
+        if (prices[index] > prices[maxIndex]) {
+            maxIndex = index;
+        }
+    }
+    return maxIndex;
+}
+
+const findMinBuy = (prices, low, hi) => {
+    let minBuy = low;
+    for (let i = low + 1; i < hi; ++i) {
+        if ([prices[i]] < prices[minBuy]) {
+            minBuy = i;
+        }
+    }
+    return minBuy;
+}
+
+const findProfit = (prices) => {
+    let i = 0;
+    let maxSell = 0;
+    let minBuy = 0;
+    let Profit = 0;
+    while (i < prices.length) {
+        let maxSell2 = findMаxSell(prices, i);
+        let minBuy2 = findMinBuy(prices, i, maxSell2);
+        let profit2 = prices[maxSell2] - prices[minBuy2];
+        if (Profit < profit2) {
+            Profit = profit2;
+            maxSell = maxSell2;
+            minBuy = minBuy2;
+        }
+        i = maxSell + 1;
+    }
+    return [minBuy, maxSell];
+}
+console.log(findProfit([3, 6, 1, 5]));
