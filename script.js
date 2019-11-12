@@ -3,7 +3,6 @@ const reverse_str = () => {
    let res1 = reverse_str1("Learning JavaScript")
 }
 ***  split(), reverse(), join() */
-// TESTS first
 const reverse_str = (str) => {
     let reversedStr = "";
     for (let i = str.length - 1; i >= 0; i--) {
@@ -22,7 +21,6 @@ test_reverse_str = () => {
 //console.log(reverse_str("Learning JavaScript"));
 //________________________________________________________________________________________
 /*2. A palindrome is a word or phrase that reads the same backward as forward. Write a function that checks for this.
-TESTS
 "Eva" = False, "eve" = true; "Hello" = False,  "" = ?   "Cigar? Toss it in a can. It is so tragic" = True */
 const check_palindrome = (someDate) => {
     someDate = someDate.toLowerCase();
@@ -67,7 +65,6 @@ const reverse_int = (int) => {
 // }
 
 // res 14 -> 41  ( 14/10=1 , 14%10=4 //next step 1/10=0, 1%10=1, devide till got 0,)
-
 const revInt = (number) => {
     let revNumber = 0;
     while (number > 0) {
