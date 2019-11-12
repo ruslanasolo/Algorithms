@@ -578,4 +578,25 @@ const fibboDp = (numb) => {
     }
     return fibboArray[numb]
 }
-console.log(fibboDp(9));
+//console.log(fibboDp(9));
+
+// 17.3 Space optimaze method 2
+// Store the previous two numbers only because that is all we need to get the next Fibonacci number
+const fibboSpace = (n) => {
+    let a = 0;
+    let b = 1;
+    let c;
+    if (n < 0) {
+        console.log("number cannot be negative")
+    }
+    if (n <= 1) {
+        return n;
+    }
+    for (let i = 2; i<=n; i++){
+            c = a+b;
+            a = b;
+            b =c;
+    }
+    return b;
+}
+//console.log(fibboSpace(9));
