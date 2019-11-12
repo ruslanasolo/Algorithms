@@ -543,4 +543,42 @@ const findProfit = (prices) => {
     }
     return [minBuy, maxSell];
 }
-console.log(findProfit([3, 6, 1, 5]));
+//console.log(findProfit([3, 6, 1, 5]));
+//________________________________________________________________________________________
+/*17. Fibonacci
+Implement a function that returns the fibonacci number at a given index.
+*/
+// 17.1. A simple method that is a direct recursive implementation mathematical recurrence relation
+//Time Complexity: T(n) = T(n-1) + T(n-2) - exponential
+const fibbo = (arg) => {
+    if (arg < 0) {
+        console.log("number cannot be negative")
+    }
+    if (arg <= 1) {
+        return arg;
+    }
+
+    return fibbo(arg - 1) + fibbo(arg - 2)
+}
+//console.log(fibbo(9));
+
+// 17.2. Dynamic Programming - storing the Fibonacci numbers calculated so far
+const fibboDp = (numb) => {
+    if (numb < 0) {
+        console.log("number cannot be negative")
+    }
+    if (numb <= 1) {
+        return numb;
+    }
+
+    let fibboArray = [0,1];
+    let i = 0;
+    while (i++ <= numb) {
+        fibboArray.push(0);
+    }
+    for (i = 2; i <= numb; i++) {
+        fibboArray[i] = fibboArray[i - 1] + fibboArray[i - 2]
+    }
+    return fibboArray[numb]
+}
+console.log(fibboDp(9));
